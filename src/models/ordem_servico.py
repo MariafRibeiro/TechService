@@ -3,11 +3,12 @@ class OrdemServico:
     STATUS_VALIDOS = ("ABERTA", "EM_ANDAMENTO", "AGUARDANDO_PECAS", "CONCLUIDA", "CANCELADA")
     PRIORIDADES_VALIDAS = ("BAIXA", "MEDIA", "ALTA", "URGENTE")
 
-    def __init__(self, id_equipamento, defeito_relatado, id_tecnico=None,diagnostico=None, solucao=None, status="ABERTA",
+    def __init__(self, cliente, equipamento, defeito_relatado, id_tecnico=None,diagnostico=None, solucao=None, status="ABERTA",
     prioridade="MEDIA", prazo_entrega=None, valor_servico=0.00, valor_pecas=0.00, desconto=0.00,
     observacoes=None):
         self.id_ordem = None
-        self.id_equipamento = id_equipamento
+        self.cliente = cliente
+        self.equipamento = equipamento
         self.id_tecnico = id_tecnico
         self.defeito_relatado = defeito_relatado
         self.diagnostico = diagnostico
@@ -18,14 +19,15 @@ class OrdemServico:
         self.valor_servico = valor_servico
         self.valor_pecas = valor_pecas
         self.desconto = desconto
-        self.valor_total = None  # calculado pela base de dados, só é conhecido depois de gravar/ler
+        self.valor_total = None
         self.observacoes = observacoes
         self.data_abertura = None
         self.data_conclusao = None
 
     def mostrar(self):
         print("ID:", self.id_ordem)
-        print("Equipamento:", self.id_equipamento)
+        print("Cliente:", self.cliente.nome, "-", self.cliente.telefone)
+        print("Equipamento:", self.equipamento.marca, self.equipamento.modelo, "- Série:", self.equipamento.numero_serie)
         print("Técnico:", self.id_tecnico)
         print("Defeito relatado:", self.defeito_relatado)
         print("Diagnóstico:", self.diagnostico)
