@@ -40,8 +40,6 @@ def procurar_por_id(id_cliente):
 
 
 def listar():
-    # Devolve os clientes ativos, já como dicionários (linhas da base de
-    # dados), prontos a usar diretamente: item["nome"], item["email"], etc.
     conexao = conectar()
     cursor = conexao.cursor(dictionary=True)
 
@@ -73,9 +71,6 @@ def atualizar(cliente):
 
 
 def remover(id_cliente):
-    # Atenção: se o cliente já tiver equipamentos associados, a base
-    # de dados recusa o DELETE (chave estrangeira ON DELETE RESTRICT).
-    # Nesse caso, usa cliente.desativar() + atualizar() em vez de remover().
     conexao = conectar()
     cursor = conexao.cursor()
 
