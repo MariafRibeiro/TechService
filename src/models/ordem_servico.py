@@ -1,11 +1,13 @@
 class OrdemServico:
 
-    STATUS_VALIDOS = ("ABERTA", "EM_ANDAMENTO", "AGUARDANDO_PECAS", "CONCLUIDA", "CANCELADA")
+    STATUS_VALIDOS = ("ABERTA", "EM_CURSO", "A_AGUARDAR_PECAS", "CONCLUIDA", "CANCELADA")
     PRIORIDADES_VALIDAS = ("BAIXA", "MEDIA", "ALTA", "URGENTE")
 
-    def __init__(self, cliente, equipamento, defeito_relatado, id_tecnico=None,diagnostico=None, solucao=None, status="ABERTA",
-    prioridade="MEDIA", prazo_entrega=None, valor_servico=0.00, valor_pecas=0.00, desconto=0.00,
-    observacoes=None):
+    def __init__(self, cliente, equipamento, defeito_relatado, id_tecnico=None,
+                 diagnostico=None, solucao=None, status="ABERTA",
+                 prioridade="MEDIA", prazo_entrega=None,
+                 valor_servico=0.00, valor_pecas=0.00, desconto=0.00,
+                 observacoes=None):
         self.id_ordem = None
         self.cliente = cliente
         self.equipamento = equipamento
@@ -19,7 +21,7 @@ class OrdemServico:
         self.valor_servico = valor_servico
         self.valor_pecas = valor_pecas
         self.desconto = desconto
-        self.valor_total = None
+        self.valor_total = None  # calculado pela base de dados
         self.observacoes = observacoes
         self.data_abertura = None
         self.data_conclusao = None
@@ -27,7 +29,7 @@ class OrdemServico:
     def mostrar(self):
         print("ID:", self.id_ordem)
         print("Cliente:", self.cliente.nome, "-", self.cliente.telefone)
-        print("Equipamento:", self.equipamento.marca, self.equipamento.modelo, "- Série:", self.equipamento.numero_serie)
+        print("Equipamento:", self.equipamento.marca, self.equipamento.modelo,"- Série:", self.equipamento.numero_serie)
         print("Técnico:", self.id_tecnico)
         print("Defeito relatado:", self.defeito_relatado)
         print("Diagnóstico:", self.diagnostico)
