@@ -48,7 +48,8 @@ def opcao_inserir():
         print("Prioridade inválida. Ordem não foi criada.")
         return
 
-    ordem = OrdemServico(cliente=cliente, equipamento=equipamento,
+    ordem = OrdemServico( cliente=cliente,
+                          equipamento=equipamento,
                           defeito_relatado=defeito_relatado,
                           prioridade=prioridade)
     ordem = ordem_servico_repository.inserir(ordem)
