@@ -14,6 +14,7 @@ def menu():
     print("0. Sair")
 
 
+
 def opcao_listar():
     ordens = ordem_servico_repository.listar()
 
